@@ -5,7 +5,7 @@ output "subnet_id" {
 
 output "subnet_name" {
   description = "Navnet på subnettet."
-  value = azurerm_subnet.snet.name
+  value       = azurerm_subnet.snet.name
 }
 
 output "vnet_name" {
