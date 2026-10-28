@@ -5,9 +5,9 @@ locals {
   common_tags = {
     owner  = var.student_id
     course = "iac"
-    module = "modul6"
+    module = "modul7"
     #ManagedBy forteller den som finner ressursen i portalen at den ikke skal
     #endres for hånd - endringer gjøres i koden, ellers oppstår drift.  
-    ManagedBy = "terraform"
+    ManagedBy = "pipeline"
   }
 }
