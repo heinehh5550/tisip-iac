@@ -28,6 +28,6 @@ module "network" {
   resource_group_name   = azurerm_resource_group.main.name
   address_space         = ["10.0.0.0/16"]
   subnet_address_prefix = ["10.0.1.0/24"]
-  tags                 = local.common_tags
+  tags                  = local.common_tags
 
 }
