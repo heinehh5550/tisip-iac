@@ -7,25 +7,28 @@ terraform {
       version = "~> 5.4"
     }
   }
+  
 }
 
 provider "azurerm" {
   features {}
 
-  # azurerm 5.x registrerer ingen resource providers automatisk.
+
+
+# azurerm 5.x registrerer ingen resource providers automatisk.
   resource_providers_to_register = ["Microsoft.Storage", "Microsoft.KeyVault"]
 }
 
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_resource_group" "backend" {
-  name     = "rg-demo-backend-hhh90"
-  location = "westeurope"
+  name     = "rg-demo-backend-${var.kortnavn}"
+  location = var.location
   tags     = local.tags
 }
 
 resource "azurerm_storage_account" "state" {
-  name                     = "stdemohhh90"
+  name                     = "stdemo${var.kortnavn}"
   resource_group_name      = azurerm_resource_group.backend.name
   location                 = azurerm_resource_group.backend.location
   account_tier             = "Standard"
@@ -52,7 +55,7 @@ resource "azurerm_storage_container" "tfstate" {
 }
 
 resource "azurerm_key_vault" "demo" {
-  name                       = "kv-demo-hhh90"
+  name                       = "kv-demo-${var.kortnavn}"
   location                   = azurerm_resource_group.backend.location
   resource_group_name        = azurerm_resource_group.backend.name
   tenant_id                  = data.azurerm_client_config.current.tenant_id
