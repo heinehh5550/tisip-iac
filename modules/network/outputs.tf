@@ -17,3 +17,8 @@ output "vnet_id" {
   description = "ID til det virtuelle nettverket."
   value       = azurerm_virtual_network.vnet.id
 }
+
+output "data_subnet_id" {
+  description = "ID til data-subnettet."
+  value       = azurerm_subnet.data.id
+}

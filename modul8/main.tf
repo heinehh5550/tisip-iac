@@ -1,8 +1,10 @@
 terraform {
+  required_version = ">= 1.16.0"
+
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 5.0"
+      version = "~> 5.4"
     }
   }
 
@@ -21,13 +23,11 @@ resource "azurerm_resource_group" "main" {
 }
 
 module "network" {
-  source                = "git::https://github.com/heinehh5550/tisip-iac.git//modules/network?ref=network-v1.1.0"
-  project               = var.project
-  name_prefix           = local.name_prefix
-  location              = azurerm_resource_group.main.location
-  resource_group_name   = azurerm_resource_group.main.name
-  address_space         = ["10.0.0.0/16"]
-  subnet_address_prefix = ["10.0.1.0/24"]
-  tags                  = local.common_tags
+  source              = "git::https://github.com/heinehh5550/tisip-iac.git//modules/network?ref=network-v1.1.0"
+  project             = var.project
+  name_prefix         = local.name_prefix
+  location            = azurerm_resource_group.main.location
+  resource_group_name = azurerm_resource_group.main.name
+  tags                = local.common_tags
 
 }

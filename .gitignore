@@ -22,6 +22,8 @@
 *.tfstate.backup
  
 .terraform/
+
+modules/**/.terraform.lock.hcl
  
 # MERK: backend.hcl er IKKE ignorert.
 #

@@ -1,4 +1,4 @@
-variable "student_id" {
+variable "kortnavn" {
   description = "Din unike student-ID. Brukes som prefiks i alle ressursnavn"
   type        = string
 
