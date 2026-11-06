@@ -1,3 +1,3 @@
-student_id = "hhh90"
+kortnavn = "hhh90"
 project    = "iac-dev"
 location   = "westeurope"
