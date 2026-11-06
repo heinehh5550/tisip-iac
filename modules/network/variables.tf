@@ -43,8 +43,4 @@ variable "name_prefix" {
   }
 }
 
-variable "ssh_source_prefix" {
-  type        = string
-  description = "Hvor SSH (port 22) er tillatt fra. Aldri \"*\"."
-  default     = "VirtualNetwork" # Azure-tag: bare trafikk fra eget VNet
-}
+
