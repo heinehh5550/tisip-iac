@@ -14,7 +14,7 @@ resource "azurerm_virtual_network" "vnet" {
 }
 
 
-resource "azurerm_subnet" "snet" {
+resource "azurerm_subnet" "app" {
   name                 = "${var.name_prefix}-snet"
   resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.vnet.name
@@ -49,6 +49,11 @@ resource "azurerm_network_security_group" "this" {
 }
 
 resource "azurerm_subnet_network_security_group_association" "this" {
-  subnet_id                 = azurerm_subnet.snet.id
+  subnet_id                 = azurerm_subnet.app.id
   network_security_group_id = azurerm_network_security_group.this.id
+}
+
+moved {
+  from = azurerm_subnet.snet
+  to   = azurerm_subnet.app
 }
